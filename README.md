@@ -19,7 +19,7 @@ This project was built for **educational purposes** to demonstrate low-level dat
 
 Ensure you have Python 3.x installed. Clone this repository and run the scripts directly from your terminal:
 
-### 1. Testing AES-128
+### 1. Testing AES-128.
 By default, the script encrypts the string `"abc"` using the key `"mysecretkey12345"`, prints the result in Hex and Base64 formats, and then successfully decrypts it back.
 
 ```bash
@@ -31,17 +31,19 @@ Hex encrypted text: 093ac6e9bbd6f1bdf2db35fd11b50f45
 Decrypted text: abc
 ```
 
-### 2. Testing SHA-256The script hashes the string "abcabcabcabcabc" (the substring "abc" repeated 5 times) and prints the final 256-bit hash in standard hexadecimal format.
+### 2. Testing SHA-256. The script hashes the substring "abc" repeated 5 times and prints the final 256-bit hash in standard hexadecimal format.
 
 ```bash
 python3 sha_256.py
+
 Example Output:
 a917d2e9c028a69f620f879b34123a1eb67fd13ebc763ab107f99bc2cf599b7c
 ```
 
 # Implementation Details
 
-## AES-128 (aes_128.py)
+AES-128 (aes_128.py)
+
 The algorithm processes data in chunks of 16 bytes, mapping them onto a $4 \times 4$ State matrix. The implementation covers:
 
 1.Padding (PKCS#7): Automatically pads the plaintext to ensure its length is a multiple of 16 bytes.
@@ -49,7 +51,8 @@ The algorithm processes data in chunks of 16 bytes, mapping them onto a $4 \time
 3.10-Round Encryption: Executes non-linear byte substitution via an S-Box, cyclic row shifting, column mixing via matrix multiplication in $GF(2^8)$, and round key XORing.
 4.Decryption: Executes the inverse operations (InvSubBytes, InvShiftRows, InvMixColumns) using the round keys in reverse order.
 
-## SHA-256 (sha_256.py)
+SHA-256 (sha_256.py)
+
 The algorithm processes the input string as a bitstream and executes:
 
 1. Preprocessing & Padding: Appends a single 1 bit followed by 0 bits until the message length is congruent to 448 mod 512.
